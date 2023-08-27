@@ -134,7 +134,7 @@ class EavEntity
             }catch (NoResultException $exception){
                 $attributeValue = new AttributeValue();
                 $attributeValue->setEavEntity($this);
-                $attributeValue->setAttributeId($attribute->getId());
+                $attributeValue->setAttribute($attribute);
                 $attributeValue->setValue($value);
                 
                 $this->addAttributeValue($attributeValue);

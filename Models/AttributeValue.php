@@ -41,24 +41,7 @@ class AttributeValue
     {
         $this->id = $id;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getAttributeId()
-    {
-        return $this->attribute_id;
-    }
-
-    /**
-     * @param mixed $attribute_id
-     */
-    public function setAttributeId($attribute_id): void
-    {
-        $this->attribute_id = $attribute_id;
-    }
-
-
+    
     /**
      * @return mixed
      */
@@ -91,6 +74,20 @@ class AttributeValue
         $this->eavEntity = $eavEntity;
     }
 
-    
+    /**
+     * @return Attribute|null
+     */
+    public function getAttribute(): ?Attribute
+    {
+        return $this->attribute;
+    }
+
+    /**
+     * @param Attribute|null $attribute
+     */
+    public function setAttribute(?Attribute $attribute): void
+    {
+        $this->attribute = $attribute;
+    }
     
 }

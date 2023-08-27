@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'dbname' => $_ENV['DB_NAME'],
-    'user' => $_ENV['DB_USER'],
-    'password' => $_ENV['DB_PASS'],
-    'host' => $_ENV['DB_HOST'],
+    'dbname' => 'oander',
+    'user' => 'root',
+    'password' => 'mysqlpass',
+    'host' => 'localhost',
     'driver' => 'pdo_mysql',
 ];
