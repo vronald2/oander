@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<div style="text-align: center;width: 100%">
+    <div style="width: 900px;margin-left: auto;margin-right: auto;margin-bottom: 30px;margin-top: 30px">
+        <form method="get" action="/">
+
+            <table>
+                <tr>
+                    <td><label for="size_filter">Méret</label></td>
+                    <td><input type="number" id="size_filter" name="filter_form[size]" value="{{ filter_form.size }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="brand_filter">Márka</label></td>
+                    <td><input type="text" id="brand_filter" name="filter_form[brand]" value="{{ filter_form.brand }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="resolution_filter">Felbontás</label></td>
+                    <td><input type="text" id="resolution_filter" name="filter_form[resolution]"
+                               value="{{ filter_form.resolution }}"></td>
+                </tr>
+                <tr>
+                    <td><label>Ár</label></td>
+                    <td><input placeholder="tól" type="number" id="price_from" name="filter_form[price][from]" value="{{ filter_form.price.from }}">-
+                        <input placeholder="ig" type="number" id="price_to" name="filter_form[price][to]" value="{{ filter_form.price.to }}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center"><input type="submit" style="margin-top: 20px"></td>
+                </tr>
+            </table>
+            <input type="hidden" name="page" value="{{ page }}">
+        </form>
+    </div>
+
+    <table style="width: 900px;margin-left: auto;margin-right: auto;">
+        <tr>
+            <th>Név</th>
+            <th>Méret</th>
+            <th>Felbontás</th>
+            <th>Márka</th>
+            <th>Ár</th>
+            <th>Akciós ár</th>
+        </tr>
+
+        {% for monitor in paginator.items %}
+            <tr>
+                <td>{{ monitor.getName }}</td>
+                <td>{{ monitor.getSize }}</td>
+                <td>{{ monitor.getResolution }}</td>
+                <td>{{ monitor.getBrand }}</td>
+                <td>{{ monitor.getPrice }}</td>
+                <td>{{ monitor.getSalePrice }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div style="width: 900px;margin-left: auto;margin-right: auto;margin-bottom: 30px;margin-top: 30px;text-align: center">
+    {% include 'paginator.twig' %}
+</div>
+</body>
+</html>
